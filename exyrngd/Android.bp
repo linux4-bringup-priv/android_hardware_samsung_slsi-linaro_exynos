@@ -1,0 +1,16 @@
+
+
+cc_binary {
+
+    name: "exyrngd",
+
+    cflags: ["-DANDROID_CHANGES"] + select(soong_config_variable("exyrngd","uses_fips_compliance_rng_drv"), {["-DUSES_FIPS_COMPLIANCE_RNG_DRV"]}),
+
+    srcs: ["exyrngd.c"],
+    shared_libs: [
+        "libc",
+        "libcutils",
+    ],
+
+    proprietary: true,
+}
